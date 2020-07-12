@@ -25,10 +25,10 @@ endif
 CONTAINER_COMMIT ?= $(shell git rev-parse --short HEAD)
 REPO_GIT_NAME ?= $(shell git config --get remote.origin.url)
 
-ITEMS       ?= 1 2 3 4
-IMAGE_TYPES ?= metanorma metanorma-ubuntu mn mn-ubuntu
-VERSIONS    ?= $(IMAGE_VERSION) $(IMAGE_VERSION) $(IMAGE_VERSION) $(IMAGE_VERSION)
-ROOT_PLATFORMS ?= ruby ubuntu ruby ubuntu
+ITEMS       ?= 1 2
+IMAGE_TYPES ?= mn mn-ubuntu
+VERSIONS    ?= $(IMAGE_VERSION) $(IMAGE_VERSION)
+ROOT_PLATFORMS ?= ruby ubuntu
 
 # Getters
 GET_IMAGE_TYPE = $(word $1,$(IMAGE_TYPES))
@@ -73,7 +73,7 @@ define ROOT_PLATFORM_TASKS
 
 $(eval CONTAINER_LOCAL_NAME := $(NS_LOCAL)/$(3):$(1))
 $(eval CONTAINER_REMOTE_NAME := $(NS_REMOTE)/$(3):$(1))
-$(eval CONTAINER_LATEST_NAME := $(NS_REMOTE)/$(3):latest)
+$(eval CONTAINER_LATEST_NAME := $(NS_REMOTE)/$(3):pres_xml)
 
 # Only the first line is eval'ed by bash
 
